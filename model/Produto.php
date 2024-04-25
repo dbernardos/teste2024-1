@@ -53,7 +53,10 @@ class Produto{
     }
 
     public function save() {
-    // logica para salvar cliente no banco
+        $conexao = new mysqli("localhost", "root", "", "aps20241");
+        $query = "INSERT INTO produtos (codigo, descricao, quantidade, valor) VALUES ('$this->codigo', '$this->descricao', '$this->quantidade', '$this->valor')";
+        $conexao->query($query);
+        // Fechar conexão e lidar com erros também é importante, mas não está incluso aqui por simplicidade.
     }
     
     public function update() {
@@ -63,7 +66,16 @@ class Produto{
     public function remove() {
     // logica para remover cliente do banco
     }
-    
+        
+    public static function carregar($id) {
+        $conexao = new mysqli("localhost", "root", "", "aps20241");
+        $query = "SELECT * FROM produto WHERE codigo = $id";
+        $resultado = $conexao->query($query);
+        $produto = $resultado->fetch_assoc();
+        $conexao->close();
+        return $produto;
+    }
+
     public function listAll() {
     		// Conexão com o banco de dados
             $conn = new mysqli("localhost", "root", "", "aps20241");
@@ -74,7 +86,7 @@ class Produto{
             }
     
             // Query para selecionar todos os produtos
-            $sql = "SELECT * FROM produtos";
+            $sql = "SELECT * FROM produto";
     
             // Executa a query
             $result = $conn->query($sql);

@@ -1,7 +1,12 @@
 <?php
-$produtos = $_REQUEST['produtos'];
-?>;
-<!-- productView.php -->
+if (isset($_REQUEST['produtos'])) {
+    $produtos = $_REQUEST['produtos'];
+}else{
+    echo "O array de produtos não foi recuperado.";
+}
+?>
+
+<!-- ProdutoView.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +25,7 @@ $produtos = $_REQUEST['produtos'];
         <tr>
             <td><?php echo $produto->getCodigo(); ?></td>
             <td><?php echo $produto->getDescricao(); ?></td>
-            <td><?php echo $produto->getPreco(); ?></td>
+            <td><?php echo $produto->getValor(); ?></td>
         </tr>
     <?php endforeach; ?>
  </table>
