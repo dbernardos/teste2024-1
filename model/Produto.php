@@ -47,8 +47,8 @@ class Produto{
 
     public function toString(){
         $txt = "Codigo: " . $this->codigo . "<br>";
-        $txt += "Descrição: " . $this->descricao . "<br>"
-        $txt += "Quantidade: " . $this->quantidade . "<br>"
-        $txt += "Valor: " . $this->valor . "<br>"
+        $txt += "Descrição: " . $this->descricao . "<br>";
+        $txt += "Quantidade: " . $this->quantidade . "<br>";
+        $txt += "Valor: " . $this->valor . "<br>";
     }
 }
