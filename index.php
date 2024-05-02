@@ -1,21 +1,20 @@
 <?php
+    require "config.php";
+    require "model/Produto.php";
+    require "model/BDProduto.php";
 
-require "config.php";
-require 'model/Produto.php';
-require "models/RepositorioProdutos.php";
+    $bdproduto = new BDProduto($pdo);
 
-$repositorio_produtos = new RepositorioProdutos($pdo);
+    //rota padrão
+    $rota = "produto";
 
-// Rota padrão
-$rota = "produto";
+    if(array_key_exists("rota", $_GET)){
+        $rota = (string) $_GET['rota'];
+    }
 
-if(array_key_exists("rota", $_GET)){
-    $rota = (string) $_GET["rota"];
-}
-
-if(is_file("controller/{$rota}.php")){
-    require "controller/{$rota}.php";
-}else{
-    echo "Rota não encontrada";
-}
+    if(is_file("controller/{$rota}.php")){
+        require "controller/{$rota}.php";
+    } else {
+        echo "Rota não encontrada";
+    }
 ?>

@@ -1,0 +1,6 @@
+CREATE TABLE produto(
+	codigo INT AUTO_INCREMENT PRIMARY KEY,
+	descricao VARCHAR(250) NOT NULL,
+	quantidade INT DEFAULT 0,
+	valor DECIMAL(6,2) DEFAULT 0.0
+);

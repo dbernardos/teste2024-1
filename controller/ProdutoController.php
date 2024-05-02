@@ -1,42 +1,36 @@
 <?php
 
-$exibir_tabela = true;
-
-$tem_erros = false;
-$erros_validacao = [];
+function tem_post(){
+    if(count($_POST) > 0){
+        return true;
+    }
+    return false;
+}
 
 $produto = new Produto();
 
-if (tem_post()) {
-
-    if (array_key_exists('descricao', $_POST) && strlen($_POST['descricao']) > 0) {
+if(tem_post()){
+    if(array_key_exists('descricao', $_POST)){
         $produto->setDescricao($_POST['descricao']);
     } else {
-       // $produto['descricao'] = '';
-        $tem_erros = true;
-        $erros_validacao['nome'] = 'A descrição do produto é obrigatório!';
+        $produto->setDescricao("");
     }
 
-    if (array_key_exists('quantidade', $_POST)) {
-        $produto->setQuantidade($_POST['quantidade']);
+    if(array_key_exists('quantidade', $_POST)){
+        $produto->setQuantidade('quantidade', $_POST['quantidade']);
     } else {
-       $produto['quantidade'] = 0;
+        $produto->setQuantidade(0);
     }
 
-    if (array_key_exists('valor', $_POST)) {
-        $produto->setValor($_POST['valor']);
+    if(array_key_exists('valor', $_POST)){
+        $produto->setValor('valor', $_POST['valor']);
     } else {
-        $produto['valor'] = 0.0;
+        $produto->setValor(0.0);
     }
 
-    if (! $tem_erros) {
-        $repositorio_produtos->salvar($produto);
-
-        header('Location: index.php?rota=produto');
-        die();
-    }
+    $bdproduto->salvar($produto);
+    header('location: index.php?rota=produto');
+    die();
 }
 
-$produtos = $repositorio_produtos->buscar();
-
-require __DIR__ . "/../views/template.php";
+$produtos = $bdproduto->buscar_produtos();
