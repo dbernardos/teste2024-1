@@ -13,9 +13,9 @@ class BDProduto{
         
         $query = $this->pdo->prepare($sql);
         $query->execute([
-            'descricao' => $produto->getDescicao(),
+            'descricao' => $produto->getDescricao(),
             'quantidade' => $produto->getQuantidade(),
-            'valor' => $produto->getValor();
+            'valor' => $produto->getValor(),
         ]);
     }
 
@@ -29,7 +29,7 @@ class BDProduto{
 
     public function buscar_produtos(){
         $sql = 'SELECT * FROM produto';
-        $resultado = $this->pdo->query($sql, PDO::FECTH_CLASS, 'Produto');
+        $resultado = $this->pdo->query($sql, PDO::FETCH_CLASS, 'Produto');
         $produtos = [];
 
         foreach($resultado as $prod){
