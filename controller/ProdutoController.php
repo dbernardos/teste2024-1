@@ -29,7 +29,7 @@ if(tem_post()){
     }
 
     $bdproduto->salvar($produto);
-    header('location: index.php?rota=produto');
+    header('location: index.php?rota=ProdutoController');
     die();
 }
 
