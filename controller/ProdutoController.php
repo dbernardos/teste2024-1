@@ -34,3 +34,4 @@ if(tem_post()){
 }
 
 $produtos = $bdproduto->buscar_produtos();
+require __DIR__ . "/../view/template.php";
