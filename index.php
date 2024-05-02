@@ -6,7 +6,7 @@
     $bdproduto = new BDProduto($pdo);
 
     //rota padrão
-    $rota = "produto";
+    $rota = "ProdutoController";
 
     if(array_key_exists("rota", $_GET)){
         $rota = (string) $_GET['rota'];
