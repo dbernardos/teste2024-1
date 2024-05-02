@@ -17,13 +17,13 @@ if(tem_post()){
     }
 
     if(array_key_exists('quantidade', $_POST)){
-        $produto->setQuantidade('quantidade', $_POST['quantidade']);
+        $produto->setQuantidade($_POST['quantidade']);
     } else {
         $produto->setQuantidade(0);
     }
 
     if(array_key_exists('valor', $_POST)){
-        $produto->setValor('valor', $_POST['valor']);
+        $produto->setValor($_POST['valor']);
     } else {
         $produto->setValor(0.0);
     }

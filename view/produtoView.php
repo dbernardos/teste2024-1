@@ -24,10 +24,12 @@ if(isset($_REQUEST['produtos'])){
                 <th>Valor</th>
             </tr>
             <?php foreach($produtos as $produto): ?>
-                <tr><?php echo $produto->getCodigo(); ?></tr>
-                <tr><?php echo $produto->getDescricao(); ?></tr>
-                <tr><?php echo $produto->getQuantidade(); ?></tr>
-                <tr><?php echo $produto->getValor(); ?></tr>
+            <tr>
+                <td><?php echo $produto->getCodigo(); ?></td>
+                <td><?php echo $produto->getDescricao(); ?></td>
+                <td><?php echo $produto->getQuantidade(); ?></td>
+                <td><?php echo $produto->getValor(); ?></td>
+            </tr>
                 <?php endforeach; ?>
         </table>
     </body>
